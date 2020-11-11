@@ -1,0 +1,18 @@
+ext {
+
+    /**
+     * see: https://proandroiddev.com/keep-salinity-with-your-versioncode-db2089b640b9
+     *
+     * Builds an Android version code from the version of the project.
+     * @return versionCode
+     */
+    buildVersionCode = { version ->
+        def (major, minor, buildNum) = version.toLowerCase().replaceAll('-', '').tokenize('.')
+
+        (major, minor, buildNum) = [major, minor, buildNum].collect {
+            it.toInteger()
+        }
+
+        (major * 1000000) + (minor * 1000) + buildNum
+    }
+}

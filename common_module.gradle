@@ -1,0 +1,38 @@
+android {
+    compileSdkVersion sdk.targetSdk
+
+    defaultConfig {
+        minSdkVersion sdk.minSdk
+        targetSdkVersion sdk.targetSdk
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    testOptions {
+        unitTests {
+            all {
+                maxHeapSize = "1024m"
+                testLogging {
+                    events 'passed', 'skipped', 'failed'
+                }
+            }
+        }
+    }
+}
+dependencies {
+    implementation deps.kotlin.stdlib
+    coreLibraryDesugaring deps.desugar
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/trendingFragment">
+    <fragment
+        android:id="@+id/trendingFragment"
+        android:name="com.example.githubtrending.ui.trending.TrendingFragment"
+        android:label="TrendingFragment"
+        tools:layout="@layout/fragment_trending">
+        <action
+            android:id="@+id/toSpokenFragment"
+            app:destination="@id/spokenFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/slide_out_up" />
+        <action
+            android:id="@+id/toProgrammingFragment"
+            app:destination="@id/programmingFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/slide_out_up" />
+        <action
+            android:id="@+id/toGranularityFragment"
+            app:destination="@id/granularityFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/slide_out_up" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/toRepoDetailsFragment"
+            app:destination="@id/repoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spokenFragment"
+        android:name="com.example.githubtrending.ui.filter.spoken_language.SpokenFragment"
+        android:label="SpokenFragment"
+        tools:layout="@layout/fragment_spoken_languages" />
+
+    <fragment
+        android:id="@+id/programmingFragment"
+        android:name="com.example.githubtrending.ui.filter.programming_language.ProgrammingFragment"
+        android:label="ProgrammingFragment"
+        tools:layout="@layout/fragment_programming_languages" />
+    <fragment
+        android:id="@+id/granularityFragment"
+        android:name="com.example.githubtrending.ui.filter.granularity.GranularityFragment"
+        android:label="GranularityFragment"
+        tools:layout="@layout/fragment_granularity" />
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:name="com.example.githubtrending.ui.details.RepoDetailsFragment"
+        android:label="RepoDetailsFragment"
+        tools:layout="@layout/fragment_repo_details">
+        <argument
+            android:name="author"
+            app:argType="string" />
+        <argument
+            android:name="repoName"
+            app:argType="string" />
+    </fragment>
+</navigation>

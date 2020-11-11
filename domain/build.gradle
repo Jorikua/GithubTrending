@@ -1,0 +1,11 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+apply from: "$project.rootDir/common_module.gradle"
+apply from: "$project.rootDir/test_dependencies.gradle"
+
+dependencies {
+    api project(':base')
+    api project(':data')
+}

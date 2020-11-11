@@ -1,0 +1,13 @@
+dependencies {
+    androidTestImplementation(deps.koin.test) { exclude group: 'org.mockito' }
+
+    testImplementation deps.mockk.unit
+    testImplementation deps.lifecycle.test
+    testImplementation deps.koin.test
+    testImplementation deps.hamcrest
+    testImplementation deps.test.coroutines
+    testImplementation deps.nhaarman
+    testImplementation deps.mockito.inline
+    testImplementation deps.test.junit
+    testImplementation project(':test')
+}

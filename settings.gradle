@@ -1,0 +1,5 @@
+include ':test'
+include ':base'
+include ':domain'
+include ':data'
+include ':app'

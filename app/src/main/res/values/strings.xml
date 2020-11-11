@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GithubTrending</string>
+    <string name="built_by">Built by:</string>
+    <string name="all_languages">All languages</string>
+    <string name="filters">Filters</string>
+    <string name="english">English</string>
+    <string name="today">Today</string>
+    <string name="this_week">This week</string>
+    <string name="this_month">This month</string>
+    <string name="trending_repositories">Trending Repositories</string>
+    <string name="spoken_languages">Spoken Languages</string>
+    <string name="search">Search</string>
+    <string name="try_again">Try again</string>
+    <string name="nothing_was_found">Nothing was found</string>
+    <string name="programming_languages">Programming Languages</string>
+    <string name="granularity">Granularity</string>
+    <string name="ordering">Ordering</string>
+    <string name="name">Name</string>
+    <string name="stars">Stars</string>
+    <string name="forks">Forks</string>
+    <string name="current_stars">Current Stars</string>
+    <string name="author">Author</string>
+    <string name="reset">Reset</string>
+    <string name="is_private">Private</string>
+    <string name="issues">Issues</string>
+    <string name="watchers">Watchers</string>
+    <string name="license">License</string>
+    <string name="branch">Branch</string>
+</resources>

@@ -1,0 +1,114 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id "kotlin-kapt"
+    id "kotlin-android-extensions"
+    id "androidx.navigation.safeargs.kotlin"
+}
+apply from: "$project.rootDir/common_module.gradle"
+apply from: "$project.rootDir/test_dependencies.gradle"
+
+Properties properties = new Properties()
+File localProperties = file("../local.properties")
+
+if (localProperties.exists()) {
+    properties.load(new FileReader(localProperties))
+}
+
+android {
+    signingConfigs {
+        release {
+            try {
+                storeFile file("../release.jks")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+            } catch (Exception e) {
+                throw new InvalidUserDataException(e.toString())
+            }
+        }
+    }
+
+    defaultConfig {
+
+        applicationId "com.example.githubtrending"
+
+        String buildNumber = properties.getProperty("build_number") ?: "0"
+        version = version + "." + buildNumber
+
+        versionCode buildVersionCode(version)
+        versionName version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            //causes crashes with ResourceNotFound exception if set to true. Need to investigate more.
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        staging {
+            buildConfigField "String", "GITHUB_URL", "\"${url.githubUrl}\""
+            buildConfigField "String", "TRENDING_GITHUB_URL", "\"${url.trendingGithubUrl}\""
+        }
+
+        prod {
+            buildConfigField "String", "GITHUB_URL", "\"${url.githubUrl}\""
+            buildConfigField "String", "TRENDING_GITHUB_URL", "\"${url.trendingGithubUrl}\""
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude "META-INF/**"
+    }
+}
+
+dependencies {
+
+    api project(':domain')
+    api project(':base')
+    api project(':data')
+
+    implementation deps.appcompat
+    implementation deps.material
+    implementation deps.recyclerview
+    implementation deps.fragment_ktx
+    implementation deps.constraintlayout
+    implementation deps.coroutines
+    implementation deps.liveevent
+    implementation deps.swipe_refresh
+    implementation deps.navigation.core
+    implementation deps.lifecycle.extensions
+    implementation deps.koin.core
+    implementation deps.epoxy.core
+    implementation deps.network.moshi
+    implementation deps.network.moshiFactory
+    implementation deps.network.retrofit
+    implementation deps.network.logging
+    kapt deps.epoxy.processor
+
+    implementation deps.glide.core
+    kapt deps.glide.compiler
+}

@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+apply from: "$project.rootDir/common_module.gradle"
+
+android {
+    defaultConfig {
+        minSdkVersion sdk.minSdk
+        targetSdkVersion sdk.targetSdk
+    }
+}
+
+dependencies {
+    api deps.coroutines
+    api deps.koin.core
+    api deps.network.retrofit
+}

@@ -1,0 +1,24 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="marginVertical"
+            type="Integer" />
+
+        <variable
+            name="marginsHorizontal"
+            type="Integer" />
+    </data>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/pale_grey"
+        app:marginBottom="@{marginVertical ?? 0}"
+        app:marginEnd="@{marginsHorizontal ?? 0}"
+        app:marginStart="@{marginsHorizontal ?? 0}"
+        app:marginTop="@{marginVertical ?? 0}" />
+
+</layout>

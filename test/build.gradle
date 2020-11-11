@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+apply from: "$project.rootDir/common_module.gradle"
+apply from: "$project.rootDir/test_dependencies.gradle"
+
+dependencies {
+
+    implementation deps.mockk.unit
+    implementation deps.test.truth
+    implementation deps.lifecycle.test
+    implementation deps.koin.test
+    implementation deps.jupiter
+    implementation deps.hamcrest
+    implementation deps.test.coroutines
+    implementation deps.nhaarman
+    implementation deps.mockito.inline
+    implementation deps.test.junit
+    api project(':base')
+}

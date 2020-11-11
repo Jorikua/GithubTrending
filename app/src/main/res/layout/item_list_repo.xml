@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.githubtrending.ui.trending.model.TrendingRepoUI" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{onClick}"
+        android:padding="@dimen/margin_medium">
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:imageUrl="@{model.avatar}"
+            app:isCircle="@{true}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{model.title}"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/text_size_xlarge"
+            app:layout_constraintEnd_toStartOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.githubtrending.ui.widget.AvatarsLayout
+            android:id="@+id/llAvatars"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintEnd_toStartOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:setAvatars="@{model.builtByAvatars}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@{model.description}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llAvatars" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLanguage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:drawableStart="@drawable/large_dot"
+            android:drawablePadding="@dimen/margin_vsmall"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:text="@{model.language}"
+            android:textColor="@{model.languageColor}"
+            android:visibility="@{!TextUtils.isEmpty(model.language)}"
+            app:drawablesTintColor="@{model.languageColor}"
+            app:layout_constraintEnd_toStartOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDesc"
+            tools:text="JavaScript" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:drawableStart="@drawable/ic_star"
+            android:drawablePadding="@dimen/margin_vsmall"
+            android:drawableTint="@color/gray"
+            android:text="@{model.stars}"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toStartOf="@id/tvForks"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLanguage"
+            tools:text="3333" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvForks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:drawableStart="@drawable/ic_fork"
+            android:drawablePadding="@dimen/margin_vsmall"
+            android:drawableTint="@color/gray"
+            android:text="@{model.forks}"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toStartOf="@id/tvCurrentStart"
+            app:layout_constraintStart_toEndOf="@id/tvStars"
+            app:layout_constraintTop_toTopOf="@id/tvStars"
+            tools:text="3333" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCurrentStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:drawableStart="@drawable/ic_favourites"
+            android:drawablePadding="@dimen/margin_vsmall"
+            android:text="@{model.currentStars}"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toStartOf="@id/ivAvatar"
+            app:layout_constraintStart_toEndOf="@id/tvForks"
+            app:layout_constraintTop_toTopOf="@id/tvStars"
+            tools:text="3333" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

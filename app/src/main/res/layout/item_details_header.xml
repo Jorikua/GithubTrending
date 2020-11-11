@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="avatarUrl"
+            type="String" />
+
+        <variable
+            name="author"
+            type="String" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="desc"
+            type="String" />
+
+        <variable
+            name="stars"
+            type="String" />
+
+        <variable
+            name="forks"
+            type="String" />
+
+        <variable
+            name="isPrivate"
+            type="boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_medium">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:imageUrl="@{avatarUrl}"
+            app:isCircle="@{true}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:text="@{author}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintTop_toTopOf="@id/iv"
+            tools:text="airbnb" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_xxlarge"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/iv"
+            app:layout_constraintTop_toBottomOf="@id/iv"
+            tools:text="MvRx" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPrivate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/is_private"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawableTint="@color/gray"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/margin_small"
+            android:visibility="@{isPrivate}"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{desc}"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="@id/tvPrivate"
+            app:layout_constraintTop_toBottomOf="@id/tvPrivate"
+            tools:text="MvRx: MvRx: MvRx: MvRx: MvRx:" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:drawableStart="@drawable/ic_star"
+            android:drawablePadding="@dimen/margin_small"
+            android:drawableTint="@color/gray"
+            android:text="@{stars}"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="@id/desc"
+            app:layout_constraintTop_toBottomOf="@id/desc"
+            tools:text="3,777" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/forks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:drawableStart="@drawable/ic_fork"
+            android:drawablePadding="@dimen/margin_small"
+            android:drawableTint="@color/gray"
+            android:text="@{forks}"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toEndOf="@id/stars"
+            app:layout_constraintTop_toTopOf="@id/stars"
+            tools:text="3,333 " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
