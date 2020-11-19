@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseViewModelActivity<VM : BaseViewModel<out BaseState>, B : ViewDataBinding> : AppCompatActivity(),
     BaseView<VM> {
 
     protected lateinit var binding: B
 
-    val viewModel: VM by lazy { getViewModel(viewModelClass()) }
+    val viewModel: VM by viewModel(clazz = viewModelClass())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

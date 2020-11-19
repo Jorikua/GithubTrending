@@ -3,7 +3,7 @@ package com.example.githubtrending.ui.filter.spoken_language
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import com.example.base.CoroutinesDispatcherProvider
+import com.example.base.coroutines.CoroutinesDispatcherProvider
 import com.example.base.resource.ResourceManager
 import com.example.domain.model.Language
 import com.example.domain.usecase.GetSpokenLanguagesUseCase

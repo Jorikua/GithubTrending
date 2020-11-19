@@ -1,7 +1,7 @@
 package com.example.test
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.base.CoroutinesDispatcherProvider
+import com.example.base.coroutines.CoroutinesDispatcherProvider
 import kotlinx.coroutines.Dispatchers
 import org.junit.Rule
 

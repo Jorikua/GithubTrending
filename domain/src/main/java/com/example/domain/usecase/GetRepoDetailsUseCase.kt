@@ -1,6 +1,6 @@
 package com.example.domain.usecase
 
-import com.example.base.CoroutinesDispatcherProvider
+import com.example.base.coroutines.CoroutinesDispatcherProvider
 import com.example.base.domain.UseCase
 import com.example.base.network.ErrorHandler
 import com.example.data.Repository

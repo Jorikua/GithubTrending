@@ -1,7 +1,7 @@
 package com.example.githubtrending.ui.filter.granularity
 
 import androidx.lifecycle.viewModelScope
-import com.example.base.CoroutinesDispatcherProvider
+import com.example.base.coroutines.CoroutinesDispatcherProvider
 import com.example.domain.model.Granularity
 import com.example.githubtrending.base.BaseViewModel
 import com.example.githubtrending.utils.Selectable

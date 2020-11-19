@@ -9,12 +9,12 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.githubtrending.BR
 import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseViewModelFragment<VM : BaseViewModel<out BaseState>, B : ViewDataBinding>
     : Fragment(), BaseView<VM> {
 
-    open val vm: VM by lazy { getViewModel(viewModelClass()) }
+    open val vm: VM by viewModel(clazz = viewModelClass())
 
     protected lateinit var binding: B
 
